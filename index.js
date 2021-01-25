@@ -12,7 +12,12 @@ const privateMessage = require('./private-message')
 
 
 client.on('ready', () => {
-  console.log('The client is ready!')
+
+      
+      console.log("Starting...");
+      console.log("The client is ready!");
+
+
 
   firstMessage(client, '803118508120080434', "Idk", ['🍉', '😐', '🔥'])
 
@@ -53,6 +58,71 @@ client.on('ready', () => {
     user.send("Yo did this work?")
   })
   })
+
+  command(client, 'embeder', (message) => {
+      const logo = "https://i.imgur.com/5nOWbAI.jpg"
+      console.log(message.author)
+      const embed = new Discord.MessageEmbed()
+      .setTitle("Lol")
+      .setAuthor(message.author.username)
+      .setImage(logo)
+      .setThumbnail(logo)
+      .setFooter("Lmao", message.author.avatarURL())
+      .setColor("#00AAFF")
+      .addFields({
+          name: "Field 1",
+          value: "Yo",
+          inline: true,
+          name: "Field 2",
+          value: "Yo",
+          inline: true,
+          name: "Field 3",
+          value: "Yo",
+          inline: true,
+      })
+      .setURL("https://sustainability.google/commitments/?utm_source=googlehpfooter&utm_medium=housepromos&utm_campaign=bottom-footer&utm_content=")
+      message.channel.send(embed)
+
+  })
+
+command(client, 'server', message => {
+    const { guild } = message
+    // console.log(guild)
+
+    const { name, region, memberCount, owner, afkTimeout, createdAt } = guild
+    const icon = guild.iconURL()
+    const embeduno = new Discord.MessageEmbed()
+    .setTitle(`Server info for **${name}**`)
+    .setThumbnail(icon)
+    .setColor("#EBCB3D")
+    .setFooter("Requested by: " + message.author.username, message.author.avatarURL())
+    .addFields({
+        name: 'Region:',
+        value: region,
+    }, {
+        name: 'Owner:',
+        value: owner.user.tag,
+    }, {
+        name: 'Total Members:',
+        value: memberCount
+    }, {
+        name: 'AFK Timeout:',
+        value: afkTimeout/60 +" Minutes",
+    }, {
+        name: 'Creation Date:',
+        value: createdAt,
+    }
+
+    )
+
+    message.channel.send(embeduno)
+
+    //message.channel.send("Check the console")
+
+
+})
+
+
 })
 
 client.login(NODETOKEN)

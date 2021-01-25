@@ -5,6 +5,7 @@ module.exports = (client, triggerText, replyText) => {
         message.content.toLowerCase() === triggerText.toLowerCase()
       ) {
         message.author.send(replyText)
+        console.log(message.author.username + " said " + message.content)
       }
     })
   }
