@@ -55,7 +55,7 @@ client.on('ready', () => {
 
       
   client.users.fetch(String(sendingto)).then(user => {
-    user.send("Yo did this work?")
+    user.send("Lol hi Lol hi Lol hi Lol hi")
   })
   })
 
